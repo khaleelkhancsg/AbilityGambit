@@ -1,59 +1,236 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Ability Gambit - Laravel-based project
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A chess-inspired strategy game that introduces abilities to expand gameplay depth, create new strategies, and increase replayability.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Project Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This project began as a passion-driven idea. I tend to gravitate towards game development projects, as gaming is something I enjoy in my free time. This also makes it more likely that I will continue developing the project.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The idea started as a chess-themed game. However, a traditional chess implementation felt too simplistic for the scope of the assessment and would not provide much room for expansion. Additionally, a basic chess clone would not be particularly engaging as a development project.
 
-## Learning Laravel
+To solve this, I introduced **abilities** into the game. These abilities enhance gameplay and create new strategic opportunities. With only a few rule modifications, the game opens up a wide variety of move combinations and gameplay possibilities.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Project Goals
 
-## Laravel Sponsors
+* Create a chess variant with deeper strategy
+* Introduce meaningful ability mechanics
+* Maintain simplicity while adding complexity
+* Build a scalable and maintainable architecture
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+# Core Concept
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+The main concept of the game is **Chess with Abilities**.
 
-## Contributing
+Each player will have:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* A traditional chess board
+* Standard chess rules (with modifications)
+* A unique **ability bar**
+* Special abilities that can be activated during gameplay
 
-## Code of Conduct
+These mechanics introduce:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* New strategies
+* Comeback mechanics
+* Increased skill ceiling
+* Greater replayability
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Example Ability: Super Pawn
 
-## License
+One of the first abilities introduced is the **Super Pawn**.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Standard Pawn Rules
+
+* Moves forward 2 spaces on first move
+* Moves forward 1 space after first move
+* Attacks diagonally 1 space
+* Cannot attack forward
+
+### Super Pawn Ability
+
+The **Super Pawn** temporarily allows a pawn to:
+
+* Attack directly forward for one move
+
+### Purpose
+
+This ability:
+
+* Prevents easy pawn blocking
+* Enhances early game positioning
+* Introduces tactical surprises
+* Expands strategic depth
+
+---
+
+# Ability Bar System
+
+Each player has an **Ability Bar** that fills over time.
+
+### Initial Design
+
+* Starts at **0%**
+* Ability activates at **100%**
+* Gains **5% every 5 moves**
+* Loses percentage when capturing opponent pieces
+* Gains percentage when losing pieces
+
+---
+
+# Tech Stack
+
+## Backend
+
+* Laravel
+
+## Frontend
+
+* Vue.js
+
+## Database
+
+* SQLite
+
+### Why These Technologies?
+
+**Vue.js**
+
+* Lightweight
+* Dynamic UI
+* Ideal for web-based games
+
+**SQLite**
+
+* Lightweight
+* Easy setup
+* Perfect for small-scale projects
+
+**Laravel**
+
+* Clean architecture
+* Strong ecosystem
+* Built-in tools for queues, events, and APIs
+
+---
+
+# Architecture
+
+This project follows **MVC Architecture**.
+
+### Benefits
+
+* Clear separation of concerns
+* Maintainable codebase
+* Easier UI changes
+* Scalable structure
+
+### Why Not Microservices?
+
+Microservices would be:
+
+* Too heavy for this project
+* Less efficient
+* Overly complex for a chess game
+
+---
+
+# Features
+
+To increase complexity and gameplay depth, the game includes:
+
+* AI opponent
+* Background move calculation
+* Ability usage evaluation
+* Cooldown queue system
+* Game statistics tracking
+* Replay queue system
+
+### Future Consideration
+
+* Move suggestion system
+* AI strategy queue
+* Ability usage
+* Win rate
+* Average game length
+* Move accuracy (planned)
+
+These features may be implemented in later stages.
+
+---
+
+# AI-Assisted Development
+
+Development used **Gemini Agentic AI** inside VSCode.
+
+### Setup Steps
+
+1. Set up Gemini inside VSCode
+2. Login via Gmail
+3. Install dependencies:
+
+* Node.js
+* PHP
+* Laravel
+* SQLite
+
+---
+
+# Installation & Setup
+
+## Install Composer
+
+```bash
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+```
+
+Verify Installation:
+
+```bash
+composer --version
+```
+
+---
+
+## Create Laravel Project
+
+```bash
+composer create-project laravel/laravel magic42_project
+```
+
+---
+
+## Configure SQLite
+
+Add the following to your `.env` file:
+
+```env
+DB_CONNECTION=sqlite
+DB_DATABASE=database/database.sqlite
+```
+
+---
+
+# Running the Project
+
+To start the server, run:
+
+```bash
+npm run dev
+php artisan serve
+php artisan reverb:start
+php artisan queue:work
+```
+
+---
+
+
+
