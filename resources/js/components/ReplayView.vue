@@ -131,10 +131,7 @@ const parsedAnalysis = (json) => {
 
 const isWhitePiece = (p) => p && p === p.toUpperCase();
 const getPieceUnicode = (p) => {
-    const map = {
-        'K': '♔', 'Q': '♕', 'R': '♖', 'B': '♗', 'N': '♘', 'P': '♙',
-        'k': '♚', 'q': '♛', 'r': '♜', 'b': '♝', 'n' : '♞', 'p': '♟'
-    };
+    const map = { 'K': '♔', 'Q': '♕', 'R': '♖', 'B': '♗', 'N': '♘', 'P': '♙', 'k': '♔', 'q': '♕', 'r': '♖', 'b': '♗', 'n' : '♘', 'p': '♙' };
     return map[p] || '';
 };
 

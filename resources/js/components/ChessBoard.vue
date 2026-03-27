@@ -73,7 +73,7 @@
 
   <!-- Game View -->
   <div v-else-if="view === 'game'" 
-       class="flex flex-col xl:flex-row items-center xl:items-start gap-6 p-8 bg-gray-50 min-h-screen transition-all duration-500"
+       class="flex flex-col xl:flex-row items-center justify-center gap-12 p-8 bg-gray-50 min-h-screen w-full transition-all duration-500"
        :class="{ 'shake-animation': isShaking }"
   >
     <div class="flex flex-col items-center gap-6">
@@ -119,7 +119,7 @@
               ]"
             >
               <span v-if="piece" 
-                    class="drop-shadow-md transform transition-all duration-300 relative" 
+                    class="drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] transform transition-all duration-300 relative font-bold" 
                     :class="[
                         getPieceColorClass(piece), 
                         isJustMoved(rIndex, cIndex) ? 'animate-bounce-short' : '',
@@ -127,7 +127,7 @@
                         isEnPassantTarget(rIndex, cIndex) ? 'glow-enpassant' : ''
                     ]"
               >
-                {{ getPieceUnicode(piece) }}
+                {{ getPieceUnicode(piece) + '\uFE0E' }}
                 <span v-if="isPieceAffectedByAbility(piece, rIndex, cIndex)" 
                       class="absolute -top-2 -right-2 text-[10px] bg-yellow-400 rounded-full w-4 h-4 flex items-center justify-center border border-gray-900 shadow-sm animate-pulse"
                 >
@@ -518,7 +518,7 @@ const isWhitePiece = (p) => p === p.toUpperCase();
 const getPieceColorClass = (p) => isWhitePiece(p) ? 'text-white' : 'text-gray-900';
 const isJustMoved = (r, c) => false;
 const getPieceUnicode = (p) => {
-    const map = { 'K': '♔', 'Q': '♕', 'R': '♖', 'B': '♗', 'N': '♘', 'P': '♙', 'k': '♚', 'q': '♛', 'r': '♜', 'b': '♝', 'n' : '♞', 'p': '♟' };
+    const map = { 'K': '♔', 'Q': '♕', 'R': '♖', 'B': '♗', 'N': '♘', 'P': '♙', 'k': '♔', 'q': '♕', 'r': '♖', 'b': '♗', 'n' : '♘', 'p': '♙' };
     return map[p] || '';
 };
 

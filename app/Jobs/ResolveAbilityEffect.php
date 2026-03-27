@@ -43,9 +43,9 @@ class ResolveAbilityEffect implements ShouldQueue
             return;
         }
 
-        $isSuperPawn = ($abilityKey === 'super_pawn');
-        if (!$this->chessService->isValidMove($this->game->board_state, $this->moveData, $isSuperPawn)) {
-            Log::error("Invalid Ability move attempted: {$this->moveData['from']} to {$this->moveData['to']}");
+        $isAbilityActive = true;
+        if (!$this->chessService->isValidMove($this->game->board_state, $this->moveData, $isAbilityActive, $abilityKey)) {
+            Log::error("Invalid Ability move attempted: {$this->moveData['from']} to {$this->moveData['to']} for ability {$abilityKey}");
             return;
         }
 

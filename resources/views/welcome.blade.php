@@ -22,11 +22,6 @@
             </div>
         </noscript>
         <div id="app">
-            <div class="flex items-center justify-center min-h-screen">
-                <div class="text-center animate-pulse">
-                    <h1 class="text-4xl font-black text-gray-300 uppercase italic">Initializing System...</h1>
-                </div>
-            </div>
             <chess-board></chess-board>
         </div>
     </body>

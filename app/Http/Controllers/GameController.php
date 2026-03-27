@@ -38,7 +38,7 @@ class GameController extends Controller
             'board_state' => ChessBoardService::INITIAL_FEN,
             'current_turn' => 'white',
             'status' => 'active',
-            'player_ability_bar' => 0,
+            'player_ability_bar' => 100,
             'ai_ability_bar' => 0,
             'player_ability' => $validated['player_ability'],
             'ai_ability' => $this->abilityService->getRandomAbility(),
@@ -96,9 +96,9 @@ class GameController extends Controller
         }
 
         if ($useAbility) {
-            ResolveAbilityEffect::dispatch($game, $validated, 'player');
+            ResolveAbilityEffect::dispatchSync($game, $validated, 'player');
             return response()->json([
-                'message' => 'Ability move queued',
+                'message' => 'Ability activated!',
                 'game' => $game->fresh()
             ]);
         }
@@ -141,10 +141,10 @@ class GameController extends Controller
                 $game->status = 'draw (insufficient material)';
             } else {
                 // Check Threefold Repetition
-                $history = $game->moves()->pluck('fen_after')->map(function($fen) {
+                $history = [ $this->chessService->getPositionKey(\App\Services\ChessBoardService::INITIAL_FEN) ];
+                $history = array_merge($history, $game->moves()->orderBy('id')->pluck('fen_after')->map(function($fen) {
                     return $this->chessService->getPositionKey($fen);
-                })->toArray();
-                $history[] = $this->chessService->getPositionKey($result['fen']);
+                })->toArray());
                 
                 if ($this->chessService->isThreefoldRepetition($history)) {
                     $game->status = 'draw (threefold repetition)';

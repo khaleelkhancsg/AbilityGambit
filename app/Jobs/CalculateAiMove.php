@@ -107,8 +107,9 @@ class CalculateAiMove implements ShouldQueue
         } elseif ($this->chessService->isInsufficientMaterial($result['fen'])) {
             $this->game->status = 'draw (insufficient material)';
         } else {
-            $history = $this->game->moves()->pluck('fen_after')->map(fn($fen) => $this->chessService->getPositionKey($fen))->toArray();
-            $history[] = $this->chessService->getPositionKey($result['fen']);
+            $history = [ $this->chessService->getPositionKey(\App\Services\ChessBoardService::INITIAL_FEN) ];
+            $history = array_merge($history, $this->game->moves()->orderBy('id')->pluck('fen_after')->map(fn($fen) => $this->chessService->getPositionKey($fen))->toArray());
+            
             if ($this->chessService->isThreefoldRepetition($history)) {
                 $this->game->status = 'draw (threefold repetition)';
             }
